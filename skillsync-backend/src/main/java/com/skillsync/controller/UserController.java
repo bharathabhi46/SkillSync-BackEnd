@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "https://skillsyncfullstack.netlify.app")
+
 public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
