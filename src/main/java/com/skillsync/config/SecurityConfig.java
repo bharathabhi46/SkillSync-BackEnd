@@ -20,7 +20,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .cors().configurationSource(corsConfigurationSource()) // ✅ critical line
+                .cors()  // ✅ DO NOT call configurationSource() here
                 .and()
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
@@ -33,7 +33,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("https://skillsyncfullstack.netlify.app")); // ✅ exact domain
+        config.setAllowedOrigins(List.of("https://skillsyncfullstack.netlify.app"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
